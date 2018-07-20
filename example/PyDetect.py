@@ -2,12 +2,12 @@ from PIL import ImageGrab
 import numpy as np
 import cv2
 
-class PyDetector():
+class ImageDetect:
     def __init__(self):
         self.detected = False
 
     def DetectImage(OnScreen, Threshold, filename_Input, *args):
-        PyDetector.detected = False
+        ImageDetect.detected = False
         try:
             if OnScreen:
                 img_rgb = np.array(ImageGrab.grab())
@@ -26,7 +26,7 @@ class PyDetector():
             inst = []
             
             for pt in zip(*loc[::-1]):
-                PyDetector.detected = True
+                ImageDetect.detected = True
                 inst.append(((pt[0], pt[1]),(pt[0] + w, pt[1] + h))) #returns two sets of coords, matches contained within
             print(len(inst)," instances found.")
             return inst
